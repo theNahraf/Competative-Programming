@@ -32,10 +32,10 @@ Welcome to my **Competitive Programming** repository! This repo contains my solu
 
 | Platform     | Profile Link                         |
 |--------------|--------------------------------------|
-| LeetCode     | [leetcode.com/Nahraf_xd](https://leetcode.com/urraf) |
-| Codeforces   | [codeforces.com/profile/YourHandle](https://codeforces.com) |
-| AtCoder      | [atcoder.jp/users/YourHandle](https://atcoder.jp) |
-| CodeChef     | [codechef.com/users/YourHandle](https://codechef.com) |
+| LeetCode     | [leetcode.com/urraf](https://leetcode.com/urraf) |
+| Codeforces   | [codeforces.com/profile/nahraf.xd](https://codeforces.com) |
+| AtCoder      | [atcoder.jp/users/urrafx](https://atcoder.jp) |
+| CodeChef     | [codechef.com/users/urrafx](https://codechef.com) |
 | HackerRank   | [hackerrank.com/YourHandle](https://hackerrank.com) |
 
 ---
