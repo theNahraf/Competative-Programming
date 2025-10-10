@@ -10,7 +10,7 @@ int main() {
     int n, x;
     cin >> n >> x;
     
-    vector<int> coins(n);
+    vector<int> coins(n);       
     for (int &c : coins) cin >> c;
     
     vector<int> dp(x + 1, 0);
