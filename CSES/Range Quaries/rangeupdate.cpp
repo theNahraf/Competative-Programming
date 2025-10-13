@@ -43,22 +43,33 @@ public:
             tree[i] = value;
             return ;
         }
-
         int mid = (l+r)/2;
         if(idx<=mid) updatequery(idx, value, 2*i+1, l , mid);
         else updatequery(idx, value, 2*i+2, mid + 1, r);
         tree[i] = tree[2*i + 1] + tree[2*i + 2];
     }
 
-    ll rangesum(int i, int l, int r, int st, int end){
-        if(l>end || r<st) return 0;
-        if(l>=st && r<=end) return tree[i];
+    void update(int i, int l, int r, int st, int end, int u){
+        if(l>end || r<st)  return;
+        if(l>=st && r<=end) {
+           tree[i] =  tree[i] + u;
+            return ;
+        } 
         int mid = (l+r)/2;
-        return rangesum(2*i+1, l, mid, st, end) + rangesum(2*i+2, mid+1, r, st, end);
+        update(2*i+1, l, mid, st, end, u); 
+        update(2*i+2, mid+1, r, st, end, u);
     }  
-    
 
-    
+    int findind(int idx,int i,  int l, int r){
+        if(l==r){
+            return tree[i];
+        }
+        int mid =  (l+r)/2;
+        if(idx <= mid) return findind(idx, 2*i+1, l, mid);
+        return findind(idx, 2*i+2, mid+1,r);
+    }
+
+
 };
 
 int main() {
@@ -69,13 +80,23 @@ int main() {
     for(int i = 0 ; i<n ; i++) cin>>arr[i];
     SegmentTree st(arr);
     while(q--){
-        int q1, q2;
-        cin>>q1>>q2;
-        // rangesum calling
-        
-        cout<<st.rangesum(0, 0, n-1, q1-1, q2-1)<<endl;
+    int type;
+    cin>>type;
+    if(type==1){
+        int a, b;
+        ll u;
+        cin>>a>>b>>u;
+      st.update(0, 0, n-1, a-1, b-1, u);
+    }
+    else if(type==2){
+        int k;
+        cin>>k;
+        cout<<st.findind(k-1, 0, 0,n-1)<<endl;
+    }
+
     }
     
+
     
     return 0;
 }

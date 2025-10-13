@@ -34,31 +34,16 @@ public:
         int mid = (l + r)/2;
         build(2*i + 1, l, mid, arr);
         build(2*i +2 , mid + 1, r, arr);
-        tree[i] = min(tree[2*i +1] , tree[2*i + 2]);
+        tree[i] = tree[2*i +1] ^ tree[2*i + 2];
     }
 
 
-    // void updatequery(int idx, int value, int i, int l, int r){
-    //     if(l==r){
-    //         tree[i] = value;
-    //         return ;
-    //     }
-
-    //     int mid = (l+r)/2;
-    //     if(idx<=mid) updatequery(idx, value, 2*i+1, l , mid);
-    //     else updatequery(idx, value, 2*i+2, mid + 1, r);
-    //     tree[i] = tree[2*i + 1] + tree[2*i + 2];
-    // }
-
-    ll rangemin(int i, int l, int r, int st, int end){
-        if(l>end || r<st) return 1e9+1;
+  ll rangexor(int i, int l, int r, int st, int end){
+        if(l>end || r<st) return 0;
         if(l>=st && r<=end) return tree[i];
         int mid = (l+r)/2;
-        return min( rangemin(2*i+1, l, mid, st, end) ,rangemin(2*i+2, mid+1, r, st, end));
+        return rangexor(2*i+1, l, mid, st, end) ^ rangexor(2*i+2, mid+1, r, st, end);
     }  
-    
-    
-
     
 };
 
@@ -74,7 +59,7 @@ int main() {
         cin>>q1>>q2;
         // rangesum calling
         
-        cout<<st.rangemin(0, 0, n-1, q1-1, q2-1)<<endl;
+        cout<<st.rangexor(0, 0, n-1, q1-1, q2-1)<<endl;
     }
     
     
