@@ -17,6 +17,7 @@ class SegmentTree{
 public:
     vector<ll> tree;
     SegmentTree(vector<ll> &arr){
+        int n= arr.size();
         tree.resize(4*n);
         build(0, 0, n-1);
     }
