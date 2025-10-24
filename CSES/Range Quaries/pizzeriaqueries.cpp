@@ -63,6 +63,8 @@ int main() {
             ll x;
             cin>>k>>x;
             //left
+            // p[k] -> x
+            //p[a] - a  -> x - k
             update(0, 0, n-1, k-1, x-k, tree1);
             //right
             update(0, 0, n-1, k-1, x+k, tree2);
